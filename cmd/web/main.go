@@ -75,7 +75,7 @@ func main() {
 	// dsn := flag.String("dsn", "postgres://postgres:qwerty@localhost/snippetbox?sslmode=disable", "PostgreSQL data source name")
 	dsn := flag.String("dsn", "postgres://imdancho:Ac4YWIZbWO1u8yHYE9bwA8q8xRUVbsbe@dpg-colunr20si5c73faeff0-a.singapore-postgres.render.com:5432/snippetbox_rpcq?sslmode=require", "PostgreSQL data source name")
 
-	addr := flag.String("addr", ":443", "HTTP network address")
+	addr := flag.String("addr", ":4000", "HTTP network address")
 	secret := flag.String("secret", "s6Ndh+pPbnzHbS*+9Pk8qGWhTzbpa@ge", "Secret key")
 	flag.Parse()
 	infoLog := log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime)
