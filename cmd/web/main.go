@@ -71,32 +71,6 @@ func main() {
 
 	log.Println("\n\n---------------------------------\n")
 
-	const (
-		host     = "localhost"
-		port     = 5432
-		user     = "postgres" // Default superuser
-		password = "qwerty"   // Enter your PostgreSQL password here
-		dbname   = "snippetbox"
-	)
-
-	// Connection string
-	connectionString := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
-
-	// Open a database connection
-	db, err := sql.Open("postgres", connectionString)
-	if err != nil {
-		log.Fatal("Error connecting to the database: ", err)
-	}
-	defer db.Close()
-
-	// Test the connection
-	err = db.Ping()
-	if err != nil {
-		log.Fatal("Error pinging the database: ", err)
-	}
-
-	fmt.Println("Connected to the database!")
-
 	// dsn := flag.String("dsn", "web:pass@/snippetbox?parseTime=true", "MySQL data source name")
 	// dsn := flag.String("dsn", "postgres://postgres:qwerty@localhost/snippetbox?sslmode=disable", "PostgreSQL data source name")
 	dsn := flag.String("dsn", "postgres://imdancho:Ac4YWIZbWO1u8yHYE9bwA8q8xRUVbsbe@dpg-colunr20si5c73faeff0-a.singapore-postgres.render.com:5432/snippetbox_rpcq?sslmode=require", "PostgreSQL data source name")
@@ -109,7 +83,7 @@ func main() {
 	infoLog.SetOutput(multiWriter)
 	errorLog.SetOutput(multiWriter)
 
-	db, err = openDB(*dsn)
+	db, err := openDB(*dsn)
 	if err != nil {
 		errorLog.Fatal(err)
 	}
